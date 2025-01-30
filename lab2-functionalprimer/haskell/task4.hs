@@ -7,7 +7,7 @@ ask prompt =
     then ask prompt
     else putStrLn ("you said: " ++ reverse line)
 
-main :: IO ()
+
 main =
   do
   let prompt = "please say something"
