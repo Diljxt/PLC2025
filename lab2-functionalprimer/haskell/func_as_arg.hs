@@ -1,13 +1,12 @@
--- Define inpFunc to take any range of numbers
+-- Define inpFunc to generate a range of numbers
 inpFunc :: Int -> Int -> [Int]
-inpFunc a b = [a..b] 
+inpFunc a b = [a..b]
 
--- Define applicatorFunc to compute sum or average
+-- Define applicatorFunc using guards
 applicatorFunc :: [Int] -> Char -> Double
-applicatorFunc nums s = 
-    if s == 's' 
-        then fromIntegral (sum nums)  -- Sum as Double
-        else fromIntegral (sum nums) / fromIntegral (length nums)  -- Average
+applicatorFunc nums s
+    | s == 's'  = fromIntegral (sum nums)  -- Compute sum
+    | otherwise = fromIntegral (sum nums) / fromIntegral (length nums)  -- Compute average
 
 main :: IO ()
 main = do
@@ -20,5 +19,5 @@ main = do
     let a = read aStr :: Int
         b = read bStr :: Int
         numbers = inpFunc a b
-        result = applicatorFunc numbers (head op)  -- Taking only the first char from input
+        result = applicatorFunc numbers (head op)  -- Take the first character from input
     putStrLn ("Result = " ++ show result)
